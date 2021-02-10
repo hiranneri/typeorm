@@ -10,9 +10,8 @@ module.exports =  {
 ],
  "cli":{
   "migrationsDir": [
-    "src/migrations/"
+    "src/database/migrations/"
   ],
   "entitiesDir": "src/models"
   }
 }
-//xnkkr
