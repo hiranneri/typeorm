@@ -12,6 +12,10 @@ export class PopulateClass1613004108456 implements MigrationInterface {
          INSERT INTO public."class (id, "name", duracao, "created_At", "updated_At")
          VALUES(uuid_generate_v4(), 'Javascript II', 0, now(), now());
           `);
+          await queryRunner.query(`
+          INSERT INTO public."class (id, "name", duracao, "created_At", "updated_At")
+          VALUES(uuid_generate_v4(), 'Heroku', 0, now(), now());
+           `);
        
     }
 
@@ -20,6 +24,8 @@ export class PopulateClass1613004108456 implements MigrationInterface {
         DELETE FROM class WHERE name='Javascript I'`);
         await queryRunner.query(`
         DELETE FROM class WHERE name='Javascript II'`);
+        await queryRunner.query(`
+        DELETE FROM class WHERE name='Heroku'`);
 
        
     }
