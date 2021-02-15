@@ -1,17 +1,18 @@
-console.log("process.env.DATABASE_URL : ",process.env.DATABASE_URL)
+console.log('processo, onde?', process.env.DATABASE_URL)
+
 module.exports =  {
   "type": "postgres",
-  "url": process.env.DATABASE_URL,
-  "port": process.env.PORT || 5000,
+  "url":process.env.DATABASE_URL,
+  "synchronize":false,
   "entities": [
-    "dist/models/**/*.js"
+    process.env.ENTITIES_URL,
  ],
  "migrations": [
-  "dist/database/migrations/**/*.js"
+  process.env.MIGRATIONS_URL,
 ],
  "cli":{
   "migrationsDir": [
-    "src/database/migrations/"
+    "src/database/migrations"
   ],
   "entitiesDir": "src/models"
   }

@@ -1,6 +1,7 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {Entity, Column, CreateDateColumn, UpdateDateColumn,PrimaryGeneratedColumn,  OneToMany } from "typeorm";
+import Lesson from "./Lesson";
 
-@Entity()
+@Entity('class')
 export default class Class {
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -14,6 +15,9 @@ export default class Class {
         length: 300
     })
     name: string;
+
+    @OneToMany(type=> Lesson, aula=> Class)
+    lesson: Lesson[];
 
     @Column()
     duracao: number;
