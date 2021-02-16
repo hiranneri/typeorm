@@ -1,7 +1,7 @@
-import { Column, CreateDateColumn, Entity, IsNull, JoinColumn, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import Class from './Class'
 
-import { IsEmail, isEmail, Max, MaxLength, Min, MinLength } from 'class-validator';
+import { IsEmail, Max, MaxLength, Min, MinLength } from 'class-validator';
 @Entity('students')
 export default class Student{
     @PrimaryGeneratedColumn('uuid')
@@ -9,12 +9,12 @@ export default class Student{
 
     @Column()
     @MinLength(3, {message:'Informe no mínimo 3 caracteres para o nome'})
-    @MaxLength(250)
+    @MaxLength(250, {message: 'Informe no máximo 250 caracteres para o nome'})
     name:string
 
     @Column()
-    @MaxLength(9999, {message:'Informe até 9.999 caracteres para a key'})
-    @MinLength(3, {message:'Informe no mínimo 3 caracteres para a key'})
+    @Max(9999, {message:'Informe o valor de até 9.999 para a key'})
+    @Min(1, {message:'Informe o valor de no mínimo 1 para key'})
     key:number
 
     @Column()
